@@ -171,13 +171,23 @@ Pair * upperBound(TreeMap * tree, void* key)
             }
             if (tree->lower_than(key, aux1->pair->key) == 0)
             {
-                aux1 = aux2;
                 aux2 = aux1->right;
+                if(tree->lower_than(key, aux2->pair->key) == 0)
+                {
+                    tree->current = aux2;
+                    return aux2->pair;
+                }
+                aux1 = aux1->right;
             }
-            if (tree->lower_than(key, aux1->pair->key) == 1)
+            else
             {
-                aux1 = aux2;
                 aux2 = aux1->left;
+                if(tree->lower_than(key, aux2->pair->key) == 0)
+                {
+                    tree->current = aux2;
+                    return aux2->pair;
+                }
+                aux1 = aux1->left;
             }
         }
     return NULL;
