@@ -168,10 +168,13 @@ Pair * upperBound(TreeMap * tree, void* key)
                 tree->current = aux;
                 return aux->pair;
             }
-            if (tree->lower_than(key, aux->pair->key) == 1) aux = aux->left;
-            else aux = aux->right;
+            if (tree->lower_than(key, aux->pair->key) == 0)
+            {
+                if (aux->right != NULL) aux = aux->right;
+                else return aux->pair;
+            }
         }
-    return aux->pair;
+    
 }
 
 Pair * firstTreeMap(TreeMap * tree) 
