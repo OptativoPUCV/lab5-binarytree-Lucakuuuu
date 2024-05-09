@@ -76,9 +76,10 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
                     tree->current = aux->right;
                     return;
                 }
-                else aux = aux->right;
             }
+            
         }
+    
 }
 
 TreeNode * minimum(TreeNode * x)
