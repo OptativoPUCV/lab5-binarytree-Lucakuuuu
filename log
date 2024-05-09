@@ -312,3 +312,14 @@ Thu 09 May 2024 10:18:48 PM UTC:
  tests:  26|1
 total_score: 60/70
 fa4a011
+Thu 09 May 2024 10:22:43 PM UTC: 
+ treemap.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘upperBound’:
+treemap.c:177:21: error: ‘auxAux’ undeclared (first use in this function)
+  177 |                     auxAux = aux;
+      |                     ^~~~~~
+treemap.c:177:21: note: each undeclared identifier is reported only once for each function it appears in
+Compilation failed
+87afc60
