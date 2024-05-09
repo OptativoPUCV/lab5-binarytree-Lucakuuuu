@@ -72,6 +72,7 @@ void insertTreeMap(TreeMap * tree, void* key, void * value)
             padre->left = nuevo;
         else
             padre->right = nuevo;
+        tree->current = nuevo;
     }
 }
 
