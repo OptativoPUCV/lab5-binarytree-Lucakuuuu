@@ -194,3 +194,16 @@ Thu 09 May 2024 09:27:20 PM UTC:
  tests:  15|4
 total_score: 30/70
 b7f7163
+Thu 09 May 2024 09:37:40 PM UTC: 
+ treemap.c | 42 +++++++++++++++++-------------------------
+ 1 file changed, 17 insertions(+), 25 deletions(-)
+In file included from test.c:4:
+treemap.c: In function ‘insertTreeMap’:
+treemap.c:59:16: error: too few arguments to function ‘is_equal’
+   59 |             if(is_equal(key, aux->pair->key) == 1) return;
+      |                ^~~~~~~~
+treemap.c:22:5: note: declared here
+   22 | int is_equal(TreeMap* tree, void* key1, void* key2){
+      |     ^~~~~~~~
+Compilation failed
+31190dd
