@@ -178,6 +178,7 @@ Pair * upperBound(TreeMap * tree, void* key)
                     return aux2->pair;
                 }
                 aux1 = aux1->right;
+                tree->current = aux1;
             }
             else
             {
@@ -188,7 +189,9 @@ Pair * upperBound(TreeMap * tree, void* key)
                     return aux2->pair;
                 }
                 aux1 = aux1->left;
+                tree->current = aux1;
             }
+            
         }
     return NULL;
 }
