@@ -96,3 +96,29 @@ treemap.c:106:80: note: ...this statement, but the latter is misleadingly indent
 cc1: all warnings being treated as errors
 Compilation failed
 97b9b72
+Thu 09 May 2024 07:23:39 PM UTC: 
+ treemap.c | 6 ++++++
+ 1 file changed, 6 insertions(+)
+In file included from test.c:4:
+treemap.c: In function ‘removeNode’:
+treemap.c:101:13: error: this ‘if’ clause does not guard... [-Werror=misleading-indentation]
+  101 |             if(node->parent->right == node) node->parent->right = NULL; free(node);
+      |             ^~
+treemap.c:101:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  101 |             if(node->parent->right == node) node->parent->right = NULL; free(node);
+      |                                                                         ^~~~
+treemap.c:106:13: error: this ‘if’ clause does not guard... [-Werror=misleading-indentation]
+  106 |             if(node->parent->right == node) node->parent->right = node->left; free(node);
+      |             ^~
+treemap.c:106:79: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  106 |             if(node->parent->right == node) node->parent->right = node->left; free(node);
+      |                                                                               ^~~~
+treemap.c:111:13: error: this ‘if’ clause does not guard... [-Werror=misleading-indentation]
+  111 |             if(node->parent->right == node) node->parent->right = node->right; free(node);
+      |             ^~
+treemap.c:111:80: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+  111 |             if(node->parent->right == node) node->parent->right = node->right; free(node);
+      |                                                                                ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+2510c2a
