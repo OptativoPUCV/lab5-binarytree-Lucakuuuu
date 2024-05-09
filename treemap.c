@@ -105,7 +105,6 @@ void removeNode(TreeMap * tree, TreeNode* node)
                 free(node->pair->value);
                 free(node->pair);
                 free(node);
-                return;
             }
         }
     }
@@ -119,7 +118,6 @@ void removeNode(TreeMap * tree, TreeNode* node)
                 free(node->pair->value);
                 free(node->pair);
                 free(node);
-                return;
             }
             
         }
@@ -135,7 +133,6 @@ void removeNode(TreeMap * tree, TreeNode* node)
                 free(node->pair->value);
                 free(node->pair);
                 free(node);
-                return;
             }
         }
     }
@@ -146,6 +143,7 @@ void removeNode(TreeMap * tree, TreeNode* node)
         node->pair->value = min->pair->value;
         removeNode(tree, min);
     }
+    
 }
 
 void eraseTreeMap(TreeMap * tree, void* key){
