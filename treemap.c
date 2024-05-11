@@ -158,57 +158,45 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
 
 Pair * upperBound(TreeMap * tree, void* key) 
 {
-      if (tree == NULL || tree->root == NULL) {
-        return NULL; // Empty tree
-      }
+    /*
+      if (tree == NULL || tree->root == NULL) return NULL;
 
-      TreeNode* current = tree->root;
-      TreeNode* ub_node = NULL; // Node with smallest key greater than or equal to key
+      TreeNode* aux = tree->root;
+      TreeNode* ub_node = NULL;
 
-      while (current != NULL) {
-        if (is_equal(tree, key, current->pair->key)) {
-          // Key found, return the pair
-          tree->current = current;
-          return current->pair;
-        } else if (tree->lower_than(key, current->pair->key) == 0) {
-          // Key is less than or equal to current key, move right
-          current = current->right;
+      while (aux != NULL) {
+        if (is_equal(tree, key, aux->pair->key)) {
+            tree->current = aux;
+            return aux->pair;
+        } else if (tree->lower_than(key, aux->pair->key) == 0) {
+            aux = aux->right;
         } else {
-          // Key is greater than current key, update ub_node and move left
-          ub_node = current;
-          current = current->left;
+            ub_node = aux;
+            aux = aux->left;
         }
       }
-
-      // Key not found, return the pair of ub_node (if any)
+      
       return ub_node ? ub_node->pair : NULL;
-    /*
+      */
     if (tree == NULL || tree->root == NULL) return NULL;
     TreeNode * aux = tree->root;
     TreeNode * auxAux = NULL;
     while(aux != NULL)
         {
-            if(auxAux == NULL)
-            {
-                if(tree->lower_than(key, aux->pair->key) == 1 || is_equal(tree, key, aux->pair->key)){
-                    tree->current = aux;
-                    return aux->pair;
-                }else{
-                    aux = aux->right;
-                }
-            }
-            else
-            {
-                if(tree->lower_than(key, aux->pair->key) == 1 || is_equal(tree, key, aux->pair->key)){
-                    tree->current = aux;
-                    return aux->pair;
+            if(is_equal(tree, key, aux->pair->key)){
+                tree->current = aux;
+                return aux->pair;
+            }else{
+                if(tree->lower_than(key, aux->pair->key) == 1)){
+                    auxAux = aux;
+                    aux = aux->left;
                 }else{
                     aux = aux->right;
                 }
             }
         }
-    return NULL;
-    */
+    if(auxAux != NULL) return auxAux->pair;
+    else return NULL;
 }
 
 Pair * firstTreeMap(TreeMap * tree) 
