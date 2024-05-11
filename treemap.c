@@ -158,6 +158,31 @@ Pair * searchTreeMap(TreeMap * tree, void* key)
 
 Pair * upperBound(TreeMap * tree, void* key) 
 {
+      if (tree == NULL || tree->root == NULL) {
+        return NULL; // Empty tree
+      }
+
+      TreeNode* current = tree->root;
+      TreeNode* ub_node = NULL; // Node with smallest key greater than or equal to key
+
+      while (current != NULL) {
+        if (is_equal(tree, key, current->pair->key)) {
+          // Key found, return the pair
+          tree->current = current;
+          return current->pair;
+        } else if (tree->lower_than(key, current->pair->key) == 0) {
+          // Key is less than or equal to current key, move right
+          current = current->right;
+        } else {
+          // Key is greater than current key, update ub_node and move left
+          ub_node = current;
+          current = current->left;
+        }
+      }
+
+      // Key not found, return the pair of ub_node (if any)
+      return ub_node ? ub_node->pair : NULL;
+    /*
     if (tree == NULL || tree->root == NULL) return NULL;
     TreeNode * aux = tree->root;
     TreeNode * auxAux = NULL;
@@ -183,6 +208,7 @@ Pair * upperBound(TreeMap * tree, void* key)
             }
         }
     return NULL;
+    */
 }
 
 Pair * firstTreeMap(TreeMap * tree) 
